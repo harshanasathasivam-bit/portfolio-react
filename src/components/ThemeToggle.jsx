@@ -1,35 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") return true;
+    if (saved === "light") return false;
+    return false;
+  });
 
+  // Sync initial state with document
   useEffect(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved === 'dark') {
-      document.documentElement.classList.add('dark')
-      setIsDark(true)
-    } else {
-      document.documentElement.classList.remove('dark')
-      setIsDark(false)
-    }
-  }, [])
+    if (isDark) document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
+  }, []);
 
-  function toggle() {
-    const next = !isDark
-    setIsDark(next)
-    if (next) document.documentElement.classList.add('dark')
-    else document.documentElement.classList.remove('dark')
-    localStorage.setItem('theme', next ? 'dark' : 'light')
+  const toggle = () => {
+    const newDark = document.documentElement.classList.toggle("dark"); 
+    setIsDark(newDark);
+    localStorage.setItem("theme", newDark ? "dark" : "light");
 
-    // animation classes
-    const el = document.getElementById('theme-toggle')
+    const el = document.getElementById("theme-toggle");
     if (el) {
-      el.classList.add('spin', 'glow-flash')
-      setTimeout(() => el.classList.remove('spin', 'glow-flash'), 800)
+      el.classList.add("spin", "glow-flash");
+      setTimeout(() => el.classList.remove("spin", "glow-flash"), 800);
     }
-  }
+  };
 
   return (
-    <button id="theme-toggle" onClick={toggle} className="ml-4 text-2xl text-violet-500 dark:text-violet-300 hover:scale-110 transition">{isDark ? '🌙' : '☀'}</button>
-  )
+    <button
+      id="theme-toggle"
+      onClick={toggle}
+      className="ml-4 text-2xl text-violet-500 dark:text-violet-300 hover:scale-110 transition"
+    >
+      {isDark ? "🌙" : "☀"}
+    </button>
+  );
 }

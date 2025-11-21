@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -11,6 +11,8 @@ import Contact from './pages/Contact'
 import Calculator from './pages/Calculator'
 
 export default function App() {
+  const location = useLocation()
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -25,7 +27,7 @@ export default function App() {
           <Route path="/calculator" element={<Calculator />} />
         </Routes>
       </main>
-      <Footer />
+      {location.pathname !== '/' && <Footer />}
     </div>
   )
 }
