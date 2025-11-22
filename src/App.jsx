@@ -9,6 +9,12 @@ import Projects from './pages/Projects'
 import Resume from './pages/Resume'
 import Contact from './pages/Contact'
 import Calculator from './pages/Calculator'
+// Import with exact filename to avoid case-sensitivity issues on some systems
+import TodoApp from './pages/todoapp.jsx';
+
+
+
+
 
 export default function App() {
   const location = useLocation()
@@ -25,6 +31,7 @@ export default function App() {
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/calculator" element={<Calculator />} />
+          <Route path="/todo-app" element={<TodoApp />} />
         </Routes>
       </main>
       {location.pathname !== '/' && <Footer />}
