@@ -3,7 +3,7 @@ import React from 'react';
 export default function About() {
   return (
     <main className="pt-24 fade-up">
-      <section id="about" className="py-20 fade-up">
+      <section id="about" className="py-8 fade-up">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center max-w-6xl">
 
           {/* LEFT SIDE TEXT */}

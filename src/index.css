@@ -4,12 +4,68 @@
 
 /* project-specific small overrides kept here */
 .fade-up { animation: fadeInUp 0.8s ease forwards; }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px);} to { opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp { 
+  from { opacity: 0; transform: translateY(40px);} 
+  to { opacity:1; transform:translateY(0);} 
+}
 
-.transition-theme { transition: background-color 0.5s ease, color 0.5s ease; }
+.transition-theme { 
+  transition: background-color 0.5s ease, color 0.5s ease; 
+}
 
 #theme-toggle.spin { animation: spin-bounce 0.8s ease; }
-@keyframes spin-bounce { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.2); } 100% { transform: rotate(360deg) scale(1); } }
+@keyframes spin-bounce { 
+  0% { transform: rotate(0deg) scale(1); } 
+  50% { transform: rotate(180deg) scale(1.2); } 
+  100% { transform: rotate(360deg) scale(1); } 
+}
 
 .glow-flash { animation: glowFlash 0.6s ease-in-out; }
-@keyframes glowFlash { 0% { box-shadow: 0 0 0px rgba(139, 92, 246, 0); } 50% { box-shadow: 0 0 20px rgba(167, 139, 250, 0.8); } 100% { box-shadow: 0 0 0px rgba(139, 92, 246, 0); } }
+@keyframes glowFlash { 
+  0% { box-shadow: 0 0 0px rgba(139, 92, 246, 0); } 
+  50% { box-shadow: 0 0 20px rgba(167, 139, 250, 0.8); } 
+  100% { box-shadow: 0 0 0px rgba(139, 92, 246, 0); } 
+}
+
+
+/* ------------------------------------------------- */
+/* 🔮 FLOATING PURPLE BLOB ANIMATION (ADDED HERE) */
+/* ------------------------------------------------- */
+
+.blob {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: #a78bfa;
+  filter: blur(140px);
+  opacity: 0.55;
+  top: 10%;
+  left: 5%;
+  animation: float 10s infinite ease-in-out;
+  border-radius: 50%;
+}
+
+.blob2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #8b5cf6;
+  filter: blur(150px);
+  opacity: 0.55;
+  bottom: 5%;
+  right: 5%;
+  animation: float2 12s infinite ease-in-out;
+  border-radius: 50%;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(60px, -50px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes float2 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-70px, 60px); }
+  100% { transform: translate(0, 0); }
+}

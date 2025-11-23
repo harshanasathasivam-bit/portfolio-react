@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <main className="flex justify-center items-center pt-24 h-screen">
+    <main className="flex justify-center items-center pt-20 h-screen">
       <section
         id="home"
         className="w-[75%] h-[75vh] bg-card-light dark:bg-card-dark rounded-2xl shadow-lg flex items-center justify-center fade-up transition-all duration-700"
