@@ -22,34 +22,9 @@ export default function Projects() {
           My Projects
         </h1>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center items-stretch w-full">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lgg gap-8 justify-items-center items-stretch w-full">
 
-          {/* Project 1 — Portfolio */}
-          <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-[90%] flex flex-col">
-            <Link to="/" className="flex flex-col h-full">
-              <img
-                src="/portfolio-6.png"
-                alt="Portfolio Project"
-                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="p-4 text-left flex-grow flex flex-col justify-between">
-                <div>
-                  <h2 className="text-lg font-bold text-indigo-900 dark:text-purple-50 mb-1">
-                    Portfolio Website
-                  </h2>
-                  <p className="text-sm mb-3">
-                    A personal portfolio website to showcase my skills and projects.
-                  </p>
-                </div>
-                <div className="flex justify-between items-center text-sm mt-auto">
-                  <div className="flex space-x-2 text-primary-light dark:text-primary-dark">
-                    <span>HTML</span><span>CSS</span><span>JS</span><span>React</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-
+          
           {/* Project 2 — Calculator */}
           <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-[90%] flex flex-col">
             <Link to="/calculator" className="flex flex-col h-full">

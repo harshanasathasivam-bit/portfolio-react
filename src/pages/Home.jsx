@@ -39,8 +39,9 @@ export default function Home() {
             </h2>
 
             <p className="max-w-xl mx-auto lg:mx-0 text-lg mb-8">
-              I'm a passionate frontend developer specializing in modern, responsive web apps.
+              I'm a passionate frontend developer specializing in modern, responsive web apps.I enjoy turning complex problems into elegant solutions and continuously learning new skills to enhance my craft.
             </p>
+            
 
             <div className="inline-block">
               <Link

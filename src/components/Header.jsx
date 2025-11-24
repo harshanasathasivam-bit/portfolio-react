@@ -13,7 +13,7 @@ export default function Header() {
 
         <nav className="hidden md:flex space-x-6">
           <NavLink to="/" className={({isActive}) => isActive ? 'text-violet-600' : ''}>Home</NavLink>
-          <NavLink to="/about" className={({isActive}) => isActive ? 'text-violet-600' : ''}>About</NavLink>
+         
           <NavLink to="/skills" className={({isActive}) => isActive ? 'text-violet-600' : ''}>Skills</NavLink>
           <NavLink to="/projects" className={({isActive}) => isActive ? 'text-violet-600' : ''}>Projects</NavLink>
           <NavLink to="/resume" className={({isActive}) => isActive ? 'text-violet-600' : ''}>Resume</NavLink>
