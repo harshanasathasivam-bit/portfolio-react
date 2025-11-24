@@ -9,7 +9,6 @@ export default function ParticlesBackground() {
   );
 
   useEffect(() => {
-    // detect theme changes
     const observer = new MutationObserver(() => {
       setTheme(
         document.documentElement.classList.contains("dark")
@@ -43,95 +42,61 @@ export default function ParticlesBackground() {
         zIndex: -20,
       }}
       options={{
-        fpsLimit: 60,
         fullScreen: false,
-
         background: { color: "transparent" },
+        fpsLimit: 60,
+        interactivity: {
+          events: { onHover: { enable: true, mode: "trail" }, resize: true },
+          modes: {
+            trail: {
+              delay: 0.005,
+              quantity: 5,
+              particles: {
+                color: {
+                  value:
+                    theme === "dark"
+                      ? ["#C084FC", "#A855F7", "#E879F9"]
+                      : ["#A855F7", "#9333EA", "#7C3AED"],
+                },
+                move: { speed: 2, outModes: { default: "destroy" } },
+                size: { value: 2 },
+              },
+            },
+          },
+        },
 
         particles: {
-          number: {
-            value: 80,
-            density: { enable: true, area: 900 },
-          },
-
-          // ⭐ Galaxy colors change in light & dark mode
+          number: { value: 120, density: { enable: true, area: 1000 } },
           color: {
             value:
               theme === "dark"
-                ? ["#C084FC", "#A855F7", "#8B5CF6", "#E879F9"]
-                : ["#A855F7", "#9333EA", "#7C3AED", "#6D28D9"],
+                ? ["#C084FC", "#A855F7", "#E879F9", "#7C3AED"]
+                : ["#A855F7", "#8B5CF6", "#9333EA", "#6D28D9"],
           },
-
           shape: { type: "circle" },
-
           opacity: {
             value: 1,
             random: true,
-            animation: {
-              enable: true,
-              speed: 0.6,
-              minimumValue: 0.3,
-            },
+            animation: { enable: true, speed: 1, minimumValue: 0.3 },
           },
-
           size: {
-            value: 2.2,
+            value: 2,
             random: true,
-            animation: {
-              enable: true,
-              speed: 3,
-              minimumValue: 0.3,
-            },
-          },
-
-          twinkle: {
-            particles: {
-              enable: true,
-              frequency: 0.05,
-              opacity: 1,
-            },
+            animation: { enable: true, speed: 4, minimumValue: 0.5 },
           },
 
           move: {
             enable: true,
-            speed: 0.4,
-            direction: "none",
+            speed: 0.5,
             random: true,
             outModes: { default: "out" },
+            parallax: { enable: true, force: 60, smooth: 15 },
           },
 
-          // 🌟 Glow aura around particles
           shadow: {
             enable: true,
-            blur: 12,
-            color:
-              theme === "dark"
-                ? "#AA66FF"
-                : "#A855F7",
-          },
-
-          // ☄️ Shooting Stars
-          roll: {
-            enable: true,
-            speed: 15,
-            darken: { enable: true, value: 20 },
-          },
-        },
-
-        detectRetina: true,
-
-        // 🪐 Parallax depth feeling
-        interactivity: {
-          detectsOn: "window",
-          events: {
-            onHover: { enable: true, mode: "repulse" },
-            resize: true,
-          },
-          modes: {
-            repulse: {
-              distance: 80,
-              duration: 0.4,
-            },
+            blur: 15,
+            color: theme === "dark" ? "#B06CFF" : "#A855F7",
           },
         },
       }}

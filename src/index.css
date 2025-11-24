@@ -28,44 +28,4 @@
 }
 
 
-/* ------------------------------------------------- */
-/* 🔮 FLOATING PURPLE BLOB ANIMATION (ADDED HERE) */
-/* ------------------------------------------------- */
 
-.blob {
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  background: #a78bfa;
-  filter: blur(140px);
-  opacity: 0.55;
-  top: 10%;
-  left: 5%;
-  animation: float 10s infinite ease-in-out;
-  border-radius: 50%;
-}
-
-.blob2 {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: #8b5cf6;
-  filter: blur(150px);
-  opacity: 0.55;
-  bottom: 5%;
-  right: 5%;
-  animation: float2 12s infinite ease-in-out;
-  border-radius: 50%;
-}
-
-@keyframes float {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(60px, -50px); }
-  100% { transform: translate(0, 0); }
-}
-
-@keyframes float2 {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(-70px, 60px); }
-  100% { transform: translate(0, 0); }
-}

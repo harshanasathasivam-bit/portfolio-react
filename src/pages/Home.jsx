@@ -3,10 +3,24 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <main className="flex justify-center items-center pt-20 h-screen">
+    <main className="relative flex justify-center items-center pt-20 h-screen overflow-hidden">
+
+      {/* 🌌 FULL-SCREEN VIDEO BACKGROUND */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-50 -z-20"
+      >
+        <source src="/bgvideo.mp4" type="video/mp4" />
+      </video>
+
       <section
         id="home"
-        className="w-[75%] h-[75vh] bg-card-light dark:bg-card-dark rounded-2xl shadow-lg flex items-center justify-center fade-up transition-all duration-700"
+        className="relative z-10 w-[75%] h-[75vh] bg-card-light dark:bg-card-dark 
+                   rounded-2xl shadow-lg flex items-center justify-center fade-up 
+                   transition-all duration-700"
       >
         <div className="container grid lg:grid-cols-2 gap-12 items-center px-6">
 
@@ -28,16 +42,17 @@ export default function Home() {
               I'm a passionate frontend developer specializing in modern, responsive web apps.
             </p>
 
-            {/* BUTTON + SOCIAL ICONS */}
             <div className="inline-block">
               <Link
                 to="/projects"
-                className="bg-primary-light dark:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:scale-105 glow transition inline-block"
+                className="bg-primary-light dark:bg-primary-dark text-white px-8 py-3 
+                           rounded-lg font-semibold shadow-lg hover:scale-105 glow 
+                           transition inline-block"
               >
                 View My Work
               </Link>
 
-              {/* SOCIAL ICON ROW */}
+              {/* SOCIAL ICONS */}
               <div className="flex justify-center space-x-6 mt-4">
 
                 {/* Instagram */}
@@ -45,7 +60,8 @@ export default function Home() {
                   href="https://instagram.com/YOUR_USERNAME"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-violet-600 dark:text-violet-300 hover:text-violet-500 dark:hover:text-purple-400 transition transform hover:scale-125"
+                  className="text-violet-600 dark:text-violet-300 hover:text-violet-500 
+                             dark:hover:text-purple-400 transition transform hover:scale-125"
                 >
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2zm0 2A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9A3.5 3.5 0 0020 16.5v-9A3.5 3.5 0 0016.5 4h-9zm9.25 1.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2A3 3 0 1015 12a3 3 0 00-3-3z" />
@@ -57,7 +73,8 @@ export default function Home() {
                   href="https://www.linkedin.com/in/harshana-sathasivam-1054a5333/"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-violet-600 dark:text-violet-300 hover:text-violet-500 dark:hover:text-purple-400 transition transform hover:scale-125"
+                  className="text-violet-600 dark:text-violet-300 hover:text-violet-500 
+                             dark:hover:text-purple-400 transition transform hover:scale-125"
                 >
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 3A2.992 2.992 0 0122 6v12a2.992 2.992 0 01-3 3H5a2.992 2.992 0 01-3-3V6a2.992 2.992 0 013-3h14zM8.339 17v-7H5.67v7h2.669zm-1.335-8.09A1.545 1.545 0 018.55 7.36c0-.85-.68-1.54-1.546-1.54-.863 0-1.546.69-1.546 1.54s.683 1.55 1.546 1.55zM18.33 17v-4.03c0-2.17-.463-3.97-2.96-3.97a2.59 2.59 0 00-2.34 1.28h-.03V10h-2.66v7h2.66v-3.9c0-1.03.19-2.01 1.48-2.01 1.27 0 1.29 1.18 1.29 2.08V17h2.56z" />
@@ -69,7 +86,8 @@ export default function Home() {
                   href="https://github.com/harshanasathasivam-bit"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-violet-600 dark:text-violet-300 hover:text-violet-500 dark:hover:text-purple-400 transition transform hover:scale-125"
+                  className="text-violet-600 dark:text-violet-300 hover:text-violet-500 
+                             dark:hover:text-purple-400 transition transform hover:scale-125"
                 >
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                     <path
@@ -84,29 +102,27 @@ export default function Home() {
             </div>
           </div>
 
-    {/* RIGHT SIDE IMAGE */}
-<div className="flex items-center justify-center lg:justify-end h-full relative fade-up-translate-y-[5%]
-">
+          {/* RIGHT SIDE IMAGE */}
+          <div className="flex items-center justify-center lg:justify-end h-full relative">
 
-  {/* PERFECTLY CENTERED PURPLE BRUSH BACKGROUND */}
-  <img
-    src="/bg-shade.png"
-    alt="Background Shade"
-    className="absolute w-[520px] md:w-[800px] opacity-90 -z-10
-               left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-  />
+            {/* PURPLE BRUSH BACKGROUND */}
+            <img
+              src="/bg-shade.png"
+              alt="Background Shade"
+              className="absolute w-[520px] md:w-[800px] opacity-90 -z-10
+                         left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            />
 
-  {/* MAIN PHOTO — CENTERED + POSITION FIXED */}
-  <img
-    src="/shana1.png"
-    alt="Harshana"
-    className="relative z-20 
-               w-[50%] md:w-[55%]
-               translate-x-[-42%]
-               object-contain drop-shadow-2xl"
-  />
-</div>
-
+            {/* MAIN PHOTO */}
+            <img
+              src="/shana1.png"
+              alt="Harshana"
+              className="relative z-20 
+                         w-[50%] md:w-[55%]
+                         translate-x-[-42%]
+                         object-contain drop-shadow-2xl"
+            />
+          </div>
 
         </div>
       </section>
