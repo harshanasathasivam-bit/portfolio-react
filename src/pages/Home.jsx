@@ -11,7 +11,7 @@ export default function Home() {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-50 -z-20"
+        className="absolute inset-0 w-full h-full object-cover opacity-50 -z-30"
       >
         <source src="/bgvideo.mp4" type="video/mp4" />
       </video>
@@ -56,18 +56,7 @@ export default function Home() {
               {/* SOCIAL ICONS */}
               <div className="flex justify-center space-x-6 mt-4">
 
-                {/* Instagram */}
-                <a
-                  href="https://instagram.com/YOUR_USERNAME"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-violet-600 dark:text-violet-300 hover:text-violet-500 
-                             dark:hover:text-purple-400 transition transform hover:scale-125"
-                >
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2zm0 2A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9A3.5 3.5 0 0020 16.5v-9A3.5 3.5 0 0016.5 4h-9zm9.25 1.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2A3 3 0 1015 12a3 3 0 00-3-3z" />
-                  </svg>
-                </a>
+              
 
                 {/* LinkedIn */}
                 <a
