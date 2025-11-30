@@ -15,7 +15,7 @@ export const Project = () => {
                     <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
                         <Link to="/calculator" className="flex flex-col h-full">
                             <img
-                                src="/calculator.png"
+                                src="/calculator.jpg"
                                 alt="Calculator App"
                                 className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -42,7 +42,7 @@ export const Project = () => {
                             className="flex flex-col h-full"
                         >
                             <img
-                                src="/to-do list.jpg"
+                                src="/notepad.jpg"
                                 alt="To-Do App"
                                 className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -71,7 +71,7 @@ export const Project = () => {
                             className="flex flex-col h-full"
                         >
                             <img
-                                src="/stopwatch.png"
+                                src="/stopwatch.jpg"
                                 alt="Stopwatch App"
                                 className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -100,7 +100,7 @@ export const Project = () => {
                             className="flex flex-col h-full"
                         >
                             <img
-                                src="/event-registration.png"
+                                src="/event.jpg"
                                 alt="Student Event Registration System"
                                 className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                             />
