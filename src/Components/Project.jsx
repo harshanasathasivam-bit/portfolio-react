@@ -10,28 +10,37 @@ export const Project = () => {
 
                 {/* ARRANGE CARDS SIDE BY SIDE */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-
-                    {/* Project – Calculator */}
+ {/* Project – Calculator */}
                     <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
-                        <Link to="/calculator" className="flex flex-col h-full">
+                        <a
+                            href=" https://harshanasathasivam-bit.github.io/calculator/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-col h-full"
+                        >
                             <img
                                 src="/calculator.jpg"
                                 alt="Calculator App"
                                 className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                             />
+
                             <div className="p-4 text-left flex-grow flex flex-col justify-between">
                                 <div>
                                     <h2 className="text-lg font-bold text-indigo-900 dark:text-purple-50 mb-1">
-                                        Calculator App
+                                        Calculator 
                                     </h2>
-                                    <p className="text-sm mb-3">A responsive calculator web app developed using React.</p>
+                                    <p className="text-sm mb-3">
+                                        A responsive calculator web app developed using React.
+                                    </p>
                                 </div>
+
                                 <div className="flex space-x-2 text-primary-light dark:text-primary-dark">
                                     <span>HTML</span><span>CSS</span><span>JS</span>
                                 </div>
                             </div>
-                        </Link>
+                        </a>
                     </div>
+
 
                     {/* Project – To-Do List */}
                     <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
@@ -67,7 +76,7 @@ export const Project = () => {
                     {/* Project – Stopwatch */}
                     <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
                         <a
-                            href="#"
+                            href=" https://harshanasathasivam-bit.github.io/stopwatch/"
                             className="flex flex-col h-full"
                         >
                             <img
@@ -96,7 +105,7 @@ export const Project = () => {
                     {/* Project – Student Event Registration System */}
                     <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
                         <a
-                            href="#"
+                            href="https://harshanasathasivam-bit.github.io/college-event-management/"
                             className="flex flex-col h-full"
                         >
                             <img

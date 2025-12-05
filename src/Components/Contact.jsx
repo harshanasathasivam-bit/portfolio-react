@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Mail, PhoneCall, Send, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail, PhoneCall, Send } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export const Contact = () => {
@@ -137,14 +137,12 @@ export const Contact = () => {
                         <div className="pt-8 text-white">
                             <h4 className="font-semibold mb-4">Contact with Me</h4>
                             <div className="flex space-x-4 justify-center">
-                                <a href="#" target="_blank">
+                                <a href="https://www.linkedin.com/in/harshana-sathasivam-1054a5333/" target="_blank" rel="noopener noreferrer">
                                     <Linkedin />
                                 </a>
-                                <a href="#" target="_blank">
-                                    <Twitter />
-                                </a>
-                                <a href="#" target="_blank">
-                                    <Instagram />
+
+                                <a href="https://github.com/harshanasathasivam-bit" target="_blank">
+                                    <Github />
                                 </a>
                             </div>
                         </div>
