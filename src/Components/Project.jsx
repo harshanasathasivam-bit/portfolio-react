@@ -8,8 +8,8 @@ export const Project = () => {
                     My Projects
                 </h1>
 
-                {/* ARRANGE CARDS ONE BY ONE */}
-                <div className="flex flex-col items-center justify-center gap-8 max-w-3xl mx-auto">
+                {/* ARRANGE CARDS SIDE BY SIDE */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
 
                     {/* Project – Calculator */}
                     <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">

@@ -4,9 +4,17 @@ import { cn } from "@/lib/utils"
 export const Contact = () => {
     return (
         <section id="contact" className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden">
-            {/* Much Darker Gradient Overlay - Smooth merge from above */}
+            {/* Primary Dark Gradient Overlay - Smooth merge from Resume section */}
+            <div className="absolute left-0 right-0 pointer-events-none" style={{
+                top: '-70vh',
+                bottom: 0,
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.9) 55%, rgba(0,0,0,0.97) 65%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 100%)',
+                zIndex: 0
+            }}></div>
+
+            {/* Secondary Dark Overlay - Extra darkness with smooth top blend */}
             <div className="absolute inset-0 pointer-events-none" style={{
-                background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 15%, rgba(0,0,0,0.95) 100%)',
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 20%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.3) 100%)',
                 zIndex: 0
             }}></div>
 
