@@ -108,13 +108,13 @@ export const MainSection = () => {
 
             {/* PERFECT CENTERED PURPLE SHADE */}
             <img
-              src="/bg-shade.png"
+              src={`${import.meta.env.BASE_URL}bg-shade.png`}
               className="absolute inset-0 m-auto w-[380px] md:w-[550px] lg:w-[650px] opacity-80 -z-10"
             />
 
             {/* MAIN PHOTO PERFECTLY CENTERED */}
             <img
-              src="/shana1.png"
+              src={`${import.meta.env.BASE_URL}shana1.png`}
               alt="Harshana"
               className="relative w-[48%] md:w-[52%] lg:w-[55%] drop-shadow-2xl animate-fade-in-delay-3"
             />

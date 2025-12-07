@@ -40,7 +40,7 @@ export const Project = () => {
             id: 0,
             title: "Calculator",
             description: "A responsive calculator web app developed using html,css and js.",
-            image: "/calculator.jpg",
+            image: `${import.meta.env.BASE_URL}calculator.jpg`,
             link: "https://harshanasathasivam-bit.github.io/calculator/",
             techs: ["HTML", "CSS", "JS"]
         },
