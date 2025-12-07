@@ -9,17 +9,32 @@ export const MainSection = () => {
   const [cardVisible, setCardVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Trigger animation on mount
+  // Trigger animation on mount and scroll
   useEffect(() => {
-    // Start typewriter effect after small delay
-    setTimeout(() => setTriggerAnimation(1), 500);
+    // Initial trigger for safety
+    setTriggerAnimation(1);
 
-    // Trigger card zoom animation
-    const timer = setTimeout(() => {
-      setCardVisible(true);
-    }, 100);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTriggerAnimation(prev => prev + 1);
+            setCardVisible(true);
+          } else {
+            setCardVisible(false);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    return () => clearTimeout(timer);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
   }, []);
 
   // Typewriter effect - runs whenever triggerAnimation changes
