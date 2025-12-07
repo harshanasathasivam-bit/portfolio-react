@@ -9,34 +9,17 @@ export const MainSection = () => {
   const [cardVisible, setCardVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Intersection Observer to detect when section is visible
+  // Trigger animation on mount
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Trigger animation by incrementing counter
-            setTriggerAnimation(prev => prev + 1);
-            // Trigger card zoom animation
-            setTimeout(() => setCardVisible(true), 100);
-          } else {
-            // Reset card animation when leaving viewport
-            setCardVisible(false);
-          }
-        });
-      },
-      { threshold: 0.3 } // Trigger when 30% of section is visible
-    );
+    // Start typewriter effect
+    setTriggerAnimation(1);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    // Trigger card zoom animation
+    const timer = setTimeout(() => {
+      setCardVisible(true);
+    }, 100);
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   // Typewriter effect - runs whenever triggerAnimation changes
