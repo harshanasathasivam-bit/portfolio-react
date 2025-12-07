@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <ParallaxBackground />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route index element={<Home />} />
           <Route path="*" element={<NotFound />} />
