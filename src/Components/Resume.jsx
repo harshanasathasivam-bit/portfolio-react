@@ -261,7 +261,7 @@ export const Resume = () => {
                 <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10
                     transition-all duration-700 delay-400 ${buttonsVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <a
-                        href="/harshana_resume_1.pdf"
+                        href={`${import.meta.env.BASE_URL}harshana_resume_1.pdf`}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-purple-600 
@@ -277,7 +277,7 @@ export const Resume = () => {
                     </a>
 
                     <a
-                        href="/harshana_resume_1.docx"
+                        href={`${import.meta.env.BASE_URL}harshana_resume_1.docx`}
                         download
                         className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-blue-600 
                             hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-3 rounded-full font-semibold 

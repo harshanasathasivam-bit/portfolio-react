@@ -3,18 +3,18 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const Skills = () => {
     const skills = [
-        { name: 'HTML', img: '/html.png' },
-        { name: 'CSS', img: '/text.png' },
-        { name: 'JavaScript', img: '/java-script.png' },
-        { name: 'Java', img: '/java.png' },
-        { name: 'Python', img: '/python.png' },
-        { name: 'C', img: '/letter-c.png' },
-        { name: 'React', img: '/react.png' },
-        { name: 'MS Excel', img: '/excel.png' },
-        { name: 'VS Code', img: '/vscode.png' },
-        { name: 'MS PowerPoint', img: '/powerpoint.png' },
-        { name: 'GitHub', img: '/github.png' },
-        { name: 'MS Word', img: '/word.png' },
+        { name: 'HTML', img: `${import.meta.env.BASE_URL}html.png` },
+        { name: 'CSS', img: `${import.meta.env.BASE_URL}text.png` },
+        { name: 'JavaScript', img: `${import.meta.env.BASE_URL}java-script.png` },
+        { name: 'Java', img: `${import.meta.env.BASE_URL}java.png` },
+        { name: 'Python', img: `${import.meta.env.BASE_URL}python.png` },
+        { name: 'C', img: `${import.meta.env.BASE_URL}letter-c.png` },
+        { name: 'React', img: `${import.meta.env.BASE_URL}react.png` },
+        { name: 'MS Excel', img: `${import.meta.env.BASE_URL}excel.png` },
+        { name: 'VS Code', img: `${import.meta.env.BASE_URL}vscode.png` },
+        { name: 'MS PowerPoint', img: `${import.meta.env.BASE_URL}powerpoint.png` },
+        { name: 'GitHub', img: `${import.meta.env.BASE_URL}github.png` },
+        { name: 'MS Word', img: `${import.meta.env.BASE_URL}word.png` },
     ];
 
     return (
