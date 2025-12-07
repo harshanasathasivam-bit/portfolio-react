@@ -14,8 +14,10 @@ export const AboutSection = () => {
                         // Entering viewport - trigger animation
                         setTimeout(() => setLeftCardVisible(true), 200);
                         setTimeout(() => setRightCardVisible(true), 400);
-                        // Stop observing once triggered
-                        if (sectionRef.current) observer.unobserve(sectionRef.current);
+                    } else {
+                        // Leaving viewport - reset for next time
+                        setLeftCardVisible(false);
+                        setRightCardVisible(false);
                     }
                 });
             },
@@ -42,8 +44,8 @@ export const AboutSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* LEFT SIDE - BLACK CARD */}
                     <div className={`bg-black dark:bg-gray-900 text-white rounded-2xl p-8 shadow-xl space-y-6 transition-all duration-1000 ease-out ${leftCardVisible
-                            ? 'opacity-100 scale-100'
-                            : 'opacity-0 scale-50'
+                        ? 'opacity-100 scale-100'
+                        : 'opacity-0 scale-50'
                         }`}>
                         <h3 className="text-2xl font-semibold">I'm Harshana S</h3>
                         <p className="text-gray-300">
