@@ -19,7 +19,7 @@ export const Resume = () => {
                     }
                 });
             },
-            { threshold: 0.2 }
+            { threshold: 0 }
         );
 
         if (sectionRef.current) {
@@ -268,7 +268,7 @@ export const Resume = () => {
                             hover:from-purple-600 hover:to-primary text-white px-8 py-3 rounded-full font-semibold 
                             transition-all duration-500 shadow-[0_0_15px_rgba(139,92,246,0.5)] 
                             hover:shadow-[0_0_35px_rgba(139,92,246,1)]
-                            hover:scale-110 active:scale-95
+                            md:hover:scale-110 active:scale-95
                             relative overflow-hidden group"
                     >
                         <span className="absolute inset-0 w-0 bg-white/20 transition-all duration-500 ease-out group-hover:w-full"></span>
@@ -283,7 +283,7 @@ export const Resume = () => {
                             hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-3 rounded-full font-semibold 
                             transition-all duration-500 shadow-[0_0_15px_rgba(79,70,229,0.5)] 
                             hover:shadow-[0_0_35px_rgba(79,70,229,1)]
-                            hover:scale-110 active:scale-95
+                            md:hover:scale-110 active:scale-95
                             relative overflow-hidden group"
                     >
                         <span className="absolute inset-0 w-0 bg-white/20 transition-all duration-500 ease-out group-hover:w-full"></span>

@@ -1,9 +1,38 @@
 import { Github, Linkedin, Mail, PhoneCall, Send } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useState, useEffect, useRef } from 'react';
 
 export const Contact = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                    } else {
+                        setIsVisible(false);
+                    }
+                });
+            },
+            { threshold: 0 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <section id="contact" className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden">
+        <section ref={sectionRef} id="contact" className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden">
             {/* Primary Dark Gradient Overlay - Ultra Smooth merge from Resume section */}
             <div className="absolute left-0 right-0 pointer-events-none" style={{
                 top: '-80vh',
@@ -114,7 +143,7 @@ export const Contact = () => {
                 zIndex: 1
             }}></div>
 
-            <div className="container mx-auto max-w-6xl relative z-10 px-4">
+            <div className={`container mx-auto max-w-6xl relative z-10 px-4 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-secondary">
                     Get In <span className="text-primary">Touch</span>
                 </h2>
@@ -178,13 +207,13 @@ export const Contact = () => {
                                     <a href="https://www.linkedin.com/in/harshana-sathasivam-1054a5333/"
                                         target="_blank" rel="noopener noreferrer"
                                         className="p-3 rounded-full bg-white/10 hover:bg-primary/30 
-                                            transition-all duration-300 hover:scale-110 group/social">
+                                            transition-all duration-300 md:hover:scale-110 active:scale-95 group/social">
                                         <Linkedin className="h-5 w-5 text-white group-hover/social:text-primary transition-colors" />
                                     </a>
                                     <a href="https://github.com/harshanasathasivam-bit"
                                         target="_blank" rel="noopener noreferrer"
                                         className="p-3 rounded-full bg-white/10 hover:bg-primary/30 
-                                            transition-all duration-300 hover:scale-110 group/social">
+                                            transition-all duration-300 md:hover:scale-110 active:scale-95 group/social">
                                         <Github className="h-5 w-5 text-white group-hover/social:text-primary transition-colors" />
                                     </a>
                                 </div>
@@ -259,7 +288,7 @@ export const Contact = () => {
                                     className="w-full py-3 px-6 rounded-xl font-semibold
                                         bg-gradient-to-r from-primary to-purple-600 hover:from-purple-600 hover:to-primary
                                         text-white shadow-lg hover:shadow-[0_10px_30px_rgba(139,93,246,0.5)]
-                                        transition-all duration-500 hover:scale-[1.02] active:scale-95
+                                        transition-all duration-500 md:hover:scale-[1.02] active:scale-95
                                         flex items-center justify-center gap-2 group/btn relative overflow-hidden"
                                 >
                                     <span className="absolute inset-0 w-0 bg-white/20 transition-all duration-500 ease-out group-hover/btn:w-full"></span>

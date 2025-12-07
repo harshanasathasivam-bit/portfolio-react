@@ -21,7 +21,7 @@ export const Project = () => {
                     }
                 });
             },
-            { threshold: 0.1 }
+            { threshold: 0 }
         );
 
         if (sectionRef.current) {
@@ -92,7 +92,7 @@ export const Project = () => {
                                 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden
                                 transition-all duration-700 ease-out
                                 hover:shadow-[0_20px_60px_rgba(139,93,246,0.4)]
-                                hover:-translate-y-3 hover:scale-[1.02]
+                                md:hover:-translate-y-3 md:hover:scale-[1.02] active:scale-95
                                 border-2 border-white/20 dark:border-gray-700/50 hover:border-primary/50
                                 transform-gpu
                                 ${visibleCards.includes(project.id)

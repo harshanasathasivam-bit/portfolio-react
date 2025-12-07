@@ -2,6 +2,34 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const Skills = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                    } else {
+                        setIsVisible(false);
+                    }
+                });
+            },
+            { threshold: 0 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     const skills = [
         { name: 'HTML', img: `${import.meta.env.BASE_URL}html.png` },
         { name: 'CSS', img: `${import.meta.env.BASE_URL}text.png` },
@@ -18,7 +46,7 @@ export const Skills = () => {
     ];
 
     return (
-        <section id="skills" className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden">
+        <section ref={sectionRef} id="skills" className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden">
             {/* Flying Bird Background - Diagonal Flight */}
             <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
                 <svg width="100" height="80" viewBox="0 0 100 80" className="absolute" style={{
@@ -88,15 +116,17 @@ export const Skills = () => {
                                 className="flex-shrink-0 scroll-snap-align-center group"
                                 style={{ scrollSnapAlign: 'center' }}
                             >
-                                <div className="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 
+                                <div className={`relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 
                                     rounded-2xl shadow-xl
                                     flex flex-col items-center justify-center p-8 w-56 h-56
                                     transition-all duration-500 ease-out
-                                    hover:scale-110 hover:shadow-[0_20px_50px_rgba(139,93,246,0.4)]
+                                    md:hover:scale-110 hover:shadow-[0_20px_50px_rgba(139,93,246,0.4)]
                                     border-2 border-gray-200 dark:border-gray-700 hover:border-primary
-                                    transform-gpu"
+                                    active:scale-95
+                                    transform-gpu
+                                    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                                     style={{
-                                        animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s backwards`
+                                        transitionDelay: `${idx * 100}ms`
                                     }}
                                 >
                                     {/* Decorative gradient overlay on hover */}
@@ -136,6 +166,6 @@ export const Skills = () => {
                     ← Scroll horizontally to explore all skills →
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
