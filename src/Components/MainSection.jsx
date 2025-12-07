@@ -25,7 +25,7 @@ export const MainSection = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0 }
     );
 
     if (sectionRef.current) {
@@ -79,7 +79,7 @@ export const MainSection = () => {
         backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center
         transition-all duration-1000 ease-out ${cardVisible
             ? 'opacity-100 scale-100'
-            : 'opacity-0 scale-50'
+            : 'opacity-0 scale-95 md:scale-50'
           }`}
       >
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full h-full px-10">

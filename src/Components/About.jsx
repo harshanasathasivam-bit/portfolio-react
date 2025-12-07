@@ -21,7 +21,7 @@ export const AboutSection = () => {
                     }
                 });
             },
-            { threshold: 0.1 }
+            { threshold: 0 }
         );
 
         if (sectionRef.current) {
@@ -45,7 +45,7 @@ export const AboutSection = () => {
                     {/* LEFT SIDE - BLACK CARD */}
                     <div className={`bg-black dark:bg-gray-900 text-white rounded-2xl p-8 shadow-xl space-y-6 transition-all duration-1000 ease-out ${leftCardVisible
                         ? 'opacity-100 scale-100'
-                        : 'opacity-0 scale-50'
+                        : 'opacity-0 scale-95 md:scale-50'
                         }`}>
                         <h3 className="text-2xl font-semibold">I'm Harshana S</h3>
                         <p className="text-gray-300">
