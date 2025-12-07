@@ -14,10 +14,8 @@ export const AboutSection = () => {
                         // Entering viewport - trigger animation
                         setTimeout(() => setLeftCardVisible(true), 200);
                         setTimeout(() => setRightCardVisible(true), 400);
-                    } else {
-                        // Leaving viewport - reset for next time
-                        setLeftCardVisible(false);
-                        setRightCardVisible(false);
+                        // Stop observing once triggered to keep it visible
+                        if (sectionRef.current) observer.unobserve(sectionRef.current);
                     }
                 });
             },
