@@ -20,8 +20,8 @@ export const MainSection = () => {
           if (entry.isIntersecting) {
             setTriggerAnimation(prev => prev + 1);
             setCardVisible(true);
-            // Stop observing once triggered so it stays visible
-            if (sectionRef.current) observer.unobserve(sectionRef.current);
+          } else {
+            setCardVisible(false);
           }
         });
       },
