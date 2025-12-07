@@ -14,14 +14,12 @@ export const AboutSection = () => {
                         // Entering viewport - trigger animation
                         setTimeout(() => setLeftCardVisible(true), 200);
                         setTimeout(() => setRightCardVisible(true), 400);
-                    } else {
-                        // Leaving viewport - reset for next time
-                        setLeftCardVisible(false);
-                        setRightCardVisible(false);
+                        // Stop observing once triggered
+                        if (sectionRef.current) observer.unobserve(sectionRef.current);
                     }
                 });
             },
-            { threshold: 0.1 } // Triggers when 10% visible
+            { threshold: 0.1 }
         );
 
         if (sectionRef.current) {
@@ -43,11 +41,10 @@ export const AboutSection = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* LEFT SIDE - BLACK CARD */}
-                    <div className={`bg-black dark:bg-gray-900 text-white rounded-2xl p-8 shadow-xl space-y-6 transition-all duration-1000 ease-out ${
-                        leftCardVisible 
-                            ? 'opacity-100 scale-100' 
+                    <div className={`bg-black dark:bg-gray-900 text-white rounded-2xl p-8 shadow-xl space-y-6 transition-all duration-1000 ease-out ${leftCardVisible
+                            ? 'opacity-100 scale-100'
                             : 'opacity-0 scale-50'
-                    }`}>
+                        }`}>
                         <h3 className="text-2xl font-semibold">I'm Harshana S</h3>
                         <p className="text-gray-300">
                             A frontend developer with a passion for crafting creative and interactive websites.
@@ -73,7 +70,7 @@ export const AboutSection = () => {
                         : 'opacity-0 translate-x-96 scale-95'
                         }`}>
                         <img
-                            src="/about-image.png"
+                            src={`${import.meta.env.BASE_URL}about-image.png`}
                             alt="Developer illustration"
                             className="w-full max-w-md rounded-2xl shadow-xl"
                         />

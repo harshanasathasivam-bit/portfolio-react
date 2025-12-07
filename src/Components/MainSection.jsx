@@ -11,8 +11,8 @@ export const MainSection = () => {
 
   // Trigger animation on mount
   useEffect(() => {
-    // Start typewriter effect
-    setTriggerAnimation(1);
+    // Start typewriter effect after small delay
+    setTimeout(() => setTriggerAnimation(1), 500);
 
     // Trigger card zoom animation
     const timer = setTimeout(() => {
