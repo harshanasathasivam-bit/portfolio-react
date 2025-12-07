@@ -30,7 +30,7 @@ export const Project = () => {
                                         Calculator 
                                     </h2>
                                     <p className="text-sm mb-3">
-                                        A responsive calculator web app developed using React.
+                                        A responsive calculator web app developed using html,css and js.
                                     </p>
                                 </div>
 
@@ -125,7 +125,7 @@ export const Project = () => {
                                 </div>
 
                                 <div className="flex space-x-2 text-primary-light dark:text-primary-dark">
-                                    <span>React</span><span>Node.js</span><span>MongoDB</span>
+                                    <span>HTML</span><span>CSS</span><span>JS</span>
                                 </div>
                             </div>
                         </a>

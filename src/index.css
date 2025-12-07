@@ -66,6 +66,28 @@
             transform: rotate(215deg) translateX(-500px);
         }
     }
+
+    @keyframes typewriter {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink-caret {
+
+        from,
+        to {
+            border-color: transparent;
+        }
+
+        50% {
+            border-color: currentColor;
+        }
+    }
 }
 
 /* ------------------ ROOT COLOR MODE ------------------ */
