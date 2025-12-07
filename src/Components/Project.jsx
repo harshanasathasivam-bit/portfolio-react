@@ -48,7 +48,7 @@ export const Project = () => {
             id: 1,
             title: "To-Do List App",
             description: "A clean and responsive To-Do List app with task editing and dark mode.",
-            image: "/notepad.jpg",
+            image: `${import.meta.env.BASE_URL}notepad.jpg`,
             link: "https://harshanasathasivam-bit.github.io/to-do-list/",
             techs: ["HTML", "CSS", "JS"]
         },
@@ -56,7 +56,7 @@ export const Project = () => {
             id: 2,
             title: "Stopwatch App",
             description: "A precise stopwatch application with lap timing and start/stop functionality.",
-            image: "/stopwatch.jpg",
+            image: `${import.meta.env.BASE_URL}stopwatch.jpg`,
             link: "https://harshanasathasivam-bit.github.io/stopwatch/",
             techs: ["HTML", "CSS", "JS"]
         },
@@ -64,7 +64,7 @@ export const Project = () => {
             id: 3,
             title: "Student Event Registration System",
             description: "A comprehensive event registration platform for students with real-time updates and management features.",
-            image: "/event.jpg",
+            image: `${import.meta.env.BASE_URL}event.jpg`,
             link: "https://harshanasathasivam-bit.github.io/college-event-management/",
             techs: ["HTML", "CSS", "JS"]
         }
