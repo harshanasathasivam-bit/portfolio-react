@@ -66,7 +66,7 @@ export const Project = () => {
             description: "A comprehensive event registration platform for students with real-time updates and management features.",
             image: "/event.jpg",
             link: "https://harshanasathasivam-bit.github.io/college-event-management/",
-            techs: ["React", "Node.js", "MongoDB"]
+            techs: ["HTML", "CSS", "JS"]
         }
     ];
 
@@ -79,127 +79,91 @@ export const Project = () => {
 
                 {/* ARRANGE CARDS SIDE BY SIDE */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    {/* Project – Calculator */}
-                    <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
-                        <a
-                            href=" https://harshanasathasivam-bit.github.io/calculator/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex flex-col h-full"
+                    {projects.map((project) => (
+                        <div
+                            key={project.id}
+                            className="relative group"
                         >
-                            <img
-                                src="/calculator.jpg"
-                                alt="Calculator App"
-                                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
+                            {/* Glow effect behind card */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-purple-600/30 rounded-2xl blur-xl 
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                            <div className="p-4 text-left flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h2 className="text-lg font-bold text-indigo-900 dark:text-purple-50 mb-1">
-                                        Calculator
-                                    </h2>
-                                    <p className="text-sm mb-3">
-                                        A responsive calculator web app developed using html,css and js.
-                                    </p>
-                                </div>
+                            <div className={`relative bg-gradient-to-br from-white/10 to-white/5 dark:from-gray-800/40 dark:to-gray-900/40
+                                backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden
+                                transition-all duration-700 ease-out
+                                hover:shadow-[0_20px_60px_rgba(139,93,246,0.4)]
+                                hover:-translate-y-3 hover:scale-[1.02]
+                                border-2 border-white/20 dark:border-gray-700/50 hover:border-primary/50
+                                transform-gpu
+                                ${visibleCards.includes(project.id)
+                                    ? 'opacity-100 translate-y-0'
+                                    : 'opacity-0 translate-y-20'
+                                }`}
+                                style={{
+                                    transition: 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)'
+                                }}
+                            >
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex flex-col h-full"
+                                >
+                                    {/* Image with overlay effect */}
+                                    <div className="relative overflow-hidden">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-44 object-cover 
+                                                group-hover:scale-110 group-hover:rotate-1
+                                                transition-all duration-700"
+                                        />
+                                        {/* Gradient overlay on hover */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent 
+                                            opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                        </div>
+                                        {/* "View Project" label on hover */}
+                                        <div className="absolute inset-0 flex items-center justify-center
+                                            opacity-0 group-hover:opacity-100 transition-all duration-500
+                                            transform scale-75 group-hover:scale-100">
+                                            <span className="bg-white/90 dark:bg-gray-900/90 text-primary 
+                                                backdrop-blur-sm px-4 py-2 rounded-full font-semibold shadow-xl
+                                                border-2 border-primary/30">
+                                                View Project →
+                                            </span>
+                                        </div>
+                                    </div>
 
-                                <div className="flex space-x-2 text-primary-light dark:text-primary-dark">
-                                    <span>HTML</span><span>CSS</span><span>JS</span>
-                                </div>
+                                    <div className="p-6 text-left flex-grow flex flex-col justify-between">
+                                        <div>
+                                            <h2 className="text-lg font-bold text-indigo-900 dark:text-purple-50 mb-2
+                                                group-hover:text-primary transition-colors duration-300">
+                                                {project.title}
+                                            </h2>
+                                            <p className="text-sm mb-4 text-gray-700 dark:text-gray-300">
+                                                {project.description}
+                                            </p>
+                                        </div>
+
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.techs.map((tech, idx) => (
+                                                <span
+                                                    key={idx}
+                                                    className="px-3 py-1 text-sm bg-primary/10 dark:bg-primary/20 
+                                                        backdrop-blur-sm text-primary dark:text-primary-light rounded-full
+                                                        border border-primary/20
+                                                        group-hover:bg-primary group-hover:text-white group-hover:border-primary
+                                                        transition-all duration-300"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-
-
-                    {/* Project – To-Do List */}
-                    <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
-                        <a
-                            href="https://harshanasathasivam-bit.github.io/to-do-list/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex flex-col h-full"
-                        >
-                            <img
-                                src="/notepad.jpg"
-                                alt="To-Do App"
-                                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-
-                            <div className="p-4 text-left flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h2 className="text-lg font-bold text-indigo-900 dark:text-purple-50 mb-1">
-                                        To-Do List App
-                                    </h2>
-                                    <p className="text-sm mb-3">
-                                        A clean and responsive To-Do List app with task editing and dark mode.
-                                    </p>
-                                </div>
-
-                                <div className="flex space-x-2 text-primary-light dark:text-primary-dark">
-                                    <span>HTML</span><span>CSS</span><span>JS</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    {/* Project – Stopwatch */}
-                    <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
-                        <a
-                            href=" https://harshanasathasivam-bit.github.io/stopwatch/"
-                            className="flex flex-col h-full"
-                        >
-                            <img
-                                src="/stopwatch.jpg"
-                                alt="Stopwatch App"
-                                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-
-                            <div className="p-4 text-left flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h2 className="text-lg font-bold text-indigo-900 dark:text-purple-50 mb-1">
-                                        Stopwatch App
-                                    </h2>
-                                    <p className="text-sm mb-3">
-                                        A precise stopwatch application with lap timing and start/stop functionality.
-                                    </p>
-                                </div>
-
-                                <div className="flex space-x-2 text-primary-light dark:text-primary-dark">
-                                    <span>HTML</span><span>CSS</span><span>JS</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    {/* Project – Student Event Registration System */}
-                    <div className="bg-white/70 dark:bg-[#2f284b] rounded-xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col">
-                        <a
-                            href="https://harshanasathasivam-bit.github.io/college-event-management/"
-                            className="flex flex-col h-full"
-                        >
-                            <img
-                                src="/event.jpg"
-                                alt="Student Event Registration System"
-                                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-
-                            <div className="p-4 text-left flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h2 className="text-lg font-bold text-indigo-900 dark:text-purple-50 mb-1">
-                                        Student Event Registration System
-                                    </h2>
-                                    <p className="text-sm mb-3">
-                                        A comprehensive event registration platform for students with real-time updates and management features.
-                                    </p>
-                                </div>
-
-                                <div className="flex space-x-2 text-primary-light dark:text-primary-dark">
-                                    <span>HTML</span><span>CSS</span><span>JS</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
