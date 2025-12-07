@@ -6,6 +6,7 @@ export const MainSection = () => {
   const fullText = "Hi, I'm Harshana";
   const [showCursor, setShowCursor] = useState(true);
   const [triggerAnimation, setTriggerAnimation] = useState(0);
+  const [cardVisible, setCardVisible] = useState(false);
   const sectionRef = useRef(null);
 
   // Intersection Observer to detect when section is visible
@@ -16,6 +17,11 @@ export const MainSection = () => {
           if (entry.isIntersecting) {
             // Trigger animation by incrementing counter
             setTriggerAnimation(prev => prev + 1);
+            // Trigger card zoom animation
+            setTimeout(() => setCardVisible(true), 100);
+          } else {
+            // Reset card animation when leaving viewport
+            setCardVisible(false);
           }
         });
       },
@@ -71,9 +77,12 @@ export const MainSection = () => {
     >
       {/* ⭐ MAIN CARD CONTAINER */}
       <div
-        className="relative z-10 w-[85%] max-w-6xl h-[75vh] bg-white dark:bg-gray-900 
+        className={`relative z-10 w-[85%] max-w-6xl h-[75vh] bg-white dark:bg-gray-900 
         backdrop-blur-xl rounded-2xl shadow-xl flex items-center justify-center
-        transition-all duration-700"
+        transition-all duration-1000 ease-out ${cardVisible
+            ? 'opacity-100 scale-100'
+            : 'opacity-0 scale-50'
+          }`}
       >
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full h-full px-10">
 

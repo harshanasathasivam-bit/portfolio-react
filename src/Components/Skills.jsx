@@ -2,10 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const Skills = () => {
-    const [currentIndex, setCurrentIndex] = useState(1);
-    const [isAnimating, setIsAnimating] = useState(false);
-    const containerRef = useRef(null);
-
     const skills = [
         { name: 'HTML', img: '/html.png' },
         { name: 'CSS', img: '/text.png' },
@@ -20,60 +16,6 @@ export const Skills = () => {
         { name: 'GitHub', img: '/github.png' },
         { name: 'MS Word', img: '/word.png' },
     ];
-
-    const handlePrev = () => {
-        if (isAnimating || currentIndex === 1) return;
-        setIsAnimating(true);
-        setCurrentIndex((prev) => Math.max(1, prev - 1));
-        setTimeout(() => setIsAnimating(false), 600);
-    };
-
-    const handleNext = () => {
-        if (isAnimating || currentIndex === skills.length - 2) return;
-        setIsAnimating(true);
-        setCurrentIndex((prev) => Math.min(skills.length - 2, prev + 1));
-        setTimeout(() => setIsAnimating(false), 600);
-    };
-
-    // Handle mouse wheel scrolling (both vertical and horizontal)
-    useEffect(() => {
-        const handleWheel = (e) => {
-            if (containerRef.current && containerRef.current.contains(e.target)) {
-                e.preventDefault();
-
-                if (isAnimating) return;
-
-                const delta = e.deltaX !== 0 ? e.deltaX : e.deltaY;
-
-                if (delta > 0) {
-                    handleNext();
-                } else if (delta < 0) {
-                    handlePrev();
-                }
-            }
-        };
-
-        const container = containerRef.current;
-        if (container) {
-            container.addEventListener('wheel', handleWheel, { passive: false });
-        }
-
-        return () => {
-            if (container) {
-                container.removeEventListener('wheel', handleWheel);
-            }
-        };
-    }, [currentIndex, skills.length, isAnimating]);
-
-    const getVisibleCards = () => {
-        return [
-            skills[currentIndex - 1],
-            skills[currentIndex],
-            skills[currentIndex + 1]
-        ].filter(Boolean);
-    };
-
-    const visibleCards = getVisibleCards();
 
     return (
         <section id="skills" className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden">
@@ -126,106 +68,72 @@ export const Skills = () => {
                     My <span className="text-primary">Skills</span>
                 </h2>
 
-                {/* Carousel Container */}
-                <div ref={containerRef} className="relative flex items-center justify-center gap-8">
+                {/* Horizontal Scrollable Container */}
+                <div className="relative">
+                    {/* Gradient fade on edges */}
+                    <div className="absolute left-0 top-0 bottom-6 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+                    <div className="absolute right-0 top-0 bottom-6 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
 
-                    {/* Left Arrow */}
-                    <button
-                        onClick={handlePrev}
-                        disabled={currentIndex === 1 || isAnimating}
-                        className={`absolute left-0 z-10 p-4 rounded-full bg-white dark:bg-gray-800 shadow-xl
-                            transition-all duration-300 hover:scale-110 active:scale-95
-                            ${currentIndex === 1 || isAnimating ? 'opacity-30 cursor-not-allowed' : 'opacity-100 hover:bg-primary hover:text-white'}
-                        `}
-                        aria-label="Previous skill"
+                    <div className="flex gap-6 overflow-x-auto pb-6 px-4 scroll-smooth"
+                        style={{
+                            scrollSnapType: 'x mandatory',
+                            WebkitOverflowScrolling: 'touch',
+                            scrollbarWidth: 'none', /* Firefox */
+                            msOverflowStyle: 'none' /* IE and Edge */
+                        }}
                     >
-                        <ChevronLeft className="w-8 h-8" />
-                    </button>
-
-                    {/* Cards Container with smooth horizontal scroll */}
-                    <div className="relative w-full max-w-4xl h-80 flex items-center justify-center overflow-hidden">
-                        <div
-                            className="flex items-center gap-6 absolute"
-                            style={{
-                                transform: `translateX(0px)`,
-                                transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-                            }}
-                        >
-                            {visibleCards.map((skill, idx) => {
-                                const isCenter = idx === 1;
-                                const position = idx === 0 ? 'left' : idx === 2 ? 'right' : 'center';
-
-                                return (
-                                    <div
-                                        key={`${skill.name}-${currentIndex}-${idx}`}
-                                        className="flex-shrink-0"
-                                        style={{
-                                            transform: `scale(${isCenter ? 1.25 : 0.9}) rotate(${position === 'left' ? -6 : position === 'right' ? 6 : 0}deg)`,
-                                            opacity: isCenter ? 1 : 0.6,
-                                            transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-                                            zIndex: isCenter ? 10 : 1
-                                        }}
-                                    >
-                                        <div className={`
-                                            bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
-                                            flex flex-col items-center justify-center p-8
-                                            ${isCenter ? 'w-56 h-56 border-4 border-primary' : 'w-48 h-48'}
-                                        `}
-                                            style={{
-                                                transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-                                            }}
-                                        >
-                                            <img
-                                                src={skill.img}
-                                                alt={skill.name}
-                                                className={`mb-4 ${isCenter ? 'h-24 w-24' : 'h-16 w-16'}`}
-                                                style={{
-                                                    transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-                                                }}
-                                            />
-                                            <p className={`font-bold text-center text-gray-800 dark:text-white ${isCenter ? 'text-xl' : 'text-base'}`}
-                                                style={{
-                                                    transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-                                                }}
-                                            >
-                                                {skill.name}
-                                            </p>
-                                        </div>
+                        {skills.map((skill, idx) => (
+                            <div
+                                key={skill.name}
+                                className="flex-shrink-0 scroll-snap-align-center group"
+                                style={{ scrollSnapAlign: 'center' }}
+                            >
+                                <div className="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 
+                                    rounded-2xl shadow-xl
+                                    flex flex-col items-center justify-center p-8 w-56 h-56
+                                    transition-all duration-500 ease-out
+                                    hover:scale-110 hover:shadow-[0_20px_50px_rgba(139,93,246,0.4)]
+                                    border-2 border-gray-200 dark:border-gray-700 hover:border-primary
+                                    transform-gpu"
+                                    style={{
+                                        animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s backwards`
+                                    }}
+                                >
+                                    {/* Decorative gradient overlay on hover */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 
+                                        group-hover:from-primary/5 group-hover:to-purple-600/10 
+                                        rounded-2xl transition-all duration-500 pointer-events-none">
                                     </div>
-                                );
-                            })}
-                        </div>
+
+                                    {/* Icon with subtle animation */}
+                                    <div className="relative z-10 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                                        <img
+                                            src={skill.img}
+                                            alt={skill.name}
+                                            className="h-24 w-24 mb-4 drop-shadow-lg"
+                                        />
+                                    </div>
+
+                                    {/* Skill name */}
+                                    <p className="relative z-10 font-bold text-center text-gray-800 dark:text-white text-xl
+                                        transition-colors duration-300 group-hover:text-primary">
+                                        {skill.name}
+                                    </p>
+
+                                    {/* Glow effect on hover */}
+                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 
+                                        bg-gradient-to-t from-primary/20 via-transparent to-transparent 
+                                        rounded-2xl transition-opacity duration-500 pointer-events-none blur-xl">
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-
-                    {/* Right Arrow */}
-                    <button
-                        onClick={handleNext}
-                        disabled={currentIndex === skills.length - 2 || isAnimating}
-                        className={`absolute right-0 z-10 p-4 rounded-full bg-white dark:bg-gray-800 shadow-xl
-                            transition-all duration-300 hover:scale-110 active:scale-95
-                            ${currentIndex === skills.length - 2 || isAnimating ? 'opacity-30 cursor-not-allowed' : 'opacity-100 hover:bg-primary hover:text-white'}
-                        `}
-                        aria-label="Next skill"
-                    >
-                        <ChevronRight className="w-8 h-8" />
-                    </button>
                 </div>
 
-                {/* Progress Indicator */}
-                <div className="flex justify-center gap-2 mt-12">
-                    {skills.map((_, idx) => (
-                        <div
-                            key={idx}
-                            className={`h-2 rounded-full transition-all duration-300
-                                ${idx === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-gray-300 dark:bg-gray-600'}
-                            `}
-                        />
-                    ))}
-                </div>
-
-                {/* Navigation Hint */}
-                <div className="text-center mt-6 text-sm text-gray-500 dark:text-gray-400">
-                    {currentIndex} of {skills.length} • Scroll or use arrows
+                {/* Scroll Hint with animation */}
+                <div className="text-center mt-8 text-sm text-gray-500 dark:text-gray-400 animate-pulse">
+                    ← Scroll horizontally to explore all skills →
                 </div>
             </div>
         </section>

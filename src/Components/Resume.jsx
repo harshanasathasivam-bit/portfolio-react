@@ -1,8 +1,40 @@
 import { Download, Eye } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 export const Resume = () => {
+    const [cardVisible, setCardVisible] = useState(false);
+    const [buttonsVisible, setButtonsVisible] = useState(false);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => setCardVisible(true), 200);
+                        setTimeout(() => setButtonsVisible(true), 600);
+                    } else {
+                        setCardVisible(false);
+                        setButtonsVisible(false);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <section id="resume" className="min-h-screen flex flex-col justify-center items-center container mx-auto px-6 relative z-10 pb-20 overflow-hidden">
+        <section ref={sectionRef} id="resume" className="min-h-screen flex flex-col justify-center items-center container mx-auto px-6 relative z-10 pb-20 overflow-hidden">
             {/* Animated Trees on Left Side - Aligned with Card */}
             <div className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none" style={{ zIndex: 1, marginLeft: 'calc(50% - 650px)', marginTop: '-50px' }}>
                 {/* Tall Grass & Reeds - Left Foreground (New - Matches Image) */}
@@ -203,31 +235,60 @@ export const Resume = () => {
                 </svg>
             </div>
 
-            <div className="bg-black/80 backdrop-blur-md p-10 rounded-2xl shadow-2xl border border-white/10 max-w-xl w-full text-center transform hover:scale-105 transition-all duration-300 relative z-20">
-                <h1 className="text-4xl font-bold text-white mb-6">
+            <div className={`bg-gradient-to-br from-black/90 to-purple-900/40 backdrop-blur-md p-10 rounded-2xl 
+                shadow-2xl border-2 border-white/10 max-w-xl w-full text-center  
+                relative z-20 overflow-hidden
+                transition-all duration-1000 ease-out
+                hover:scale-105 hover:shadow-[0_20px_60px_rgba(139,93,246,0.6)]
+                hover:border-primary/50
+                ${cardVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
+            >
+                {/* Animated gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-1000
+                    animate-pulse"></div>
+
+                <h1 className={`text-4xl font-bold text-white mb-6 relative z-10
+                    transition-all duration-700 ${cardVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     My Resume
                 </h1>
 
-                <p className="text-lg text-gray-300 mb-8">
+                <p className={`text-lg text-gray-300 mb-8 relative z-10
+                    transition-all duration-700 delay-200 ${cardVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     Download my resume to learn more about my skills, education, and experience.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10
+                    transition-all duration-700 delay-400 ${buttonsVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <a
                         href="/harshana_resume_1.pdf"
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-block bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-[0_0_15px_rgba(139,92,246,0.5)] hover:shadow-[0_0_25px_rgba(139,92,246,0.8)]"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-purple-600 
+                            hover:from-purple-600 hover:to-primary text-white px-8 py-3 rounded-full font-semibold 
+                            transition-all duration-500 shadow-[0_0_15px_rgba(139,92,246,0.5)] 
+                            hover:shadow-[0_0_35px_rgba(139,92,246,1)]
+                            hover:scale-110 active:scale-95
+                            relative overflow-hidden group"
                     >
-                        👁️ View Resume
+                        <span className="absolute inset-0 w-0 bg-white/20 transition-all duration-500 ease-out group-hover:w-full"></span>
+                        <Eye className="w-5 h-5 relative z-10" />
+                        <span className="relative z-10">View Resume</span>
                     </a>
 
                     <a
                         href="/harshana_resume_1.docx"
                         download
-                        className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-[0_0_15px_rgba(79,70,229,0.5)] hover:shadow-[0_0_25px_rgba(79,70,229,0.8)]"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-blue-600 
+                            hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-3 rounded-full font-semibold 
+                            transition-all duration-500 shadow-[0_0_15px_rgba(79,70,229,0.5)] 
+                            hover:shadow-[0_0_35px_rgba(79,70,229,1)]
+                            hover:scale-110 active:scale-95
+                            relative overflow-hidden group"
                     >
-                        📄 Download Resume
+                        <span className="absolute inset-0 w-0 bg-white/20 transition-all duration-500 ease-out group-hover:w-full"></span>
+                        <Download className="w-5 h-5 relative z-10" />
+                        <span className="relative z-10">Download Resume</span>
                     </a>
                 </div>
             </div>
